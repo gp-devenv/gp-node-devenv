@@ -1,0 +1,40 @@
+#
+# gp-node-devenv
+# Copyright (c) 2023, Greg PFISTER. MIT License.
+#
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+#
+
+version: '3.9'
+
+# Services
+services:
+  gp-node-devenv:
+    container_name: gp-node-devenv
+    user: vscode
+    privileged: true
+    build:
+      dockerfile: Dockerfile
+      context: .
+    volumes:
+      - ..:/workspace
+      - gp-node-devenv-home:/home
+      - gp-node-devenv-docker-data:/var/lib/docker
+    networks:
+      - gp-node-devenv-net
+
+volumes:
+  gp-node-devenv-home:
+    name: gp-node-devenv-home
+  gp-node-devenv-docker-data:
+    name: gp-node-devenv-docker-data
+
+networks:
+  gp-node-devenv-net:
+    name: gp-node-devenv-net
