@@ -20,21 +20,15 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-rm() {
-    VERSION="`cat .version`-dev"
-    IMAGE_NAME="`cat .image_name`"
-    IMAGE="$IMAGE_NAME:$1-$VERSION"
-
-    docker image rm $IMAGE
-}
-
-if [ ! -z "$2" ]; then
-    rm $1 $2
-else
-    rm $1 14
-    rm $1 16
-    rm $1 18
+if [ -z "$2" ]; then
+    echo "Usage: $0 <UBUNUT_VERSION> <NODE_VERSION>"
+    exit 1
 fi
 
+VERSION="`cat .version`-dev"
+IMAGE_NAME="`cat .image_name`"
+IMAGE="$IMAGE_NAME:$1-$VERSION"
+
+docker image rm $IMAGE
 
 # End

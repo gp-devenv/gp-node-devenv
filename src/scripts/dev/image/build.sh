@@ -20,32 +20,27 @@ if [ -z "$1" ]; then
     exit 1
 fi
 
-build() {
-    VERSION="`cat .version`-dev"
-    DOCKERFILE=`echo "./Dockerfile."$1`
-    IMAGE_NAME="`cat .image_name`"
-    IMAGE="$IMAGE_NAME:$1-$2-$VERSION"
-
-    if [ ! -f "$DOCKERFILE" ]; then
-        echo "Dockerfile '$DOCKERFILE' not found"
-        exit 1
-    fi
-
-    echo "Building $IMAGE from $DOCKERFILE"
-
-    docker build --no-cache \
-                 --build-arg NODE_VERSION="$2.x" \
-                 -t $IMAGE \
-                 -f $DOCKERFILE \
-                 .
-}
-
-if [ ! -z "$2" ]; then
-    build $1 $2
-else
-    build $1 14
-    build $1 16
-    build $1 18
+if [ -z "$2" ]; then
+    echo "Usage: $0 <UBUNUT_VERSION> <NODE_VERSION>"
+    exit 1
 fi
+
+VERSION="`cat .version`-dev"
+DOCKERFILE=`echo "./Dockerfile."$1`
+IMAGE_NAME="`cat .image_name`"
+IMAGE="$IMAGE_NAME:$1-$2-$VERSION"
+
+if [ ! -f "$DOCKERFILE" ]; then
+    echo "Dockerfile '$DOCKERFILE' not found"
+    exit 1
+fi
+
+echo "Building $IMAGE from $DOCKERFILE"
+
+docker build --no-cache \
+                --build-arg NODE_VERSION="$2.x" \
+                -t $IMAGE \
+                -f $DOCKERFILE \
+                .
 
 # End

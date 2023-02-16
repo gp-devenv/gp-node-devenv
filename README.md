@@ -3,7 +3,7 @@
 ![ARM64](https://img.shields.io/badge/linux%2farm64-Yes-red)
 ![AMD64](https://img.shields.io/badge/linux%2famd64-Yes-red)
 
-# node Dev Environment
+# gp-node-devenv: Build Node.js dev containers for VSCode
 
 Copyright (c) 2023, Greg PFISTER. MIT License
 
@@ -23,8 +23,7 @@ This image is built from
 [ghcr.io/gp-devenv/gp-base-devenv](https://github.com/gp-devenv/gp-base-devenv/pkgs/container/gp-base-devenv)
 and adds:
 
-- a node environment to build node and Angular apps.
-- `chromium` for Angular unit testing.
+- a node environment to build node
 
 The image can be found
 [here](https://github.com/gp-devenv/gp-node-devenv/pkgs/container/gp-node-devenv).
@@ -47,20 +46,21 @@ user will not be persisted.
 ### Versioning
 
 Image version contains the Ubuntu version and the build version, using the
-format `<Ubuntu version>-<Build version>`. The build version refers to the
-latest Dockerfile script, when modification consists of fixing (patch change),
-or adding or removing something significant (minor change) or breaking (major).
+format `<Ubuntu version>-<Node version>-<Build version>`. The build version
+refers to the latest Dockerfile script, when modification consists of fixing
+(patch change), or adding or removing something significant (minor change) or
+breaking (major).
 
 For example:
 
-| Image                                        | Description                               |
-| -------------------------------------------- | ----------------------------------------- |
-| ghcr.io/gp-devenv/gp-node-devenv:22.04       | The latest build using Ubuntu 22.04       |
-| ghcr.io/gp-devenv/gp-node-devenv:22.04-1     | The latest build 1.x using Ubuntu 22.04   |
-| ghcr.io/gp-devenv/gp-node-devenv:22.04-1.1   | The latest build 1.1.x using Ubuntu 22.04 |
-| ghcr.io/gp-devenv/gp-node-devenv:22.04-1.1.0 | The latest build 1.1.0 using Ubuntu 22.04 |
-| ghcr.io/gp-devenv/gp-node-devenv:22.04-1.0   | The latest build 1.0.x using Ubuntu 22.04 |
-| ghcr.io/gp-devenv/gp-node-devenv:22.04-1.0.0 | The latest build 1.0.0 using Ubuntu 22.04 |
+| Image                                           | Description                                          |
+| ----------------------------------------------- | ---------------------------------------------------- |
+| ghcr.io/gp-devenv/gp-node-devenv:22.04-18       | The latest build using Ubuntu 22.04/Node.js 18       |
+| ghcr.io/gp-devenv/gp-node-devenv:22.04-18-1     | The latest build 1.x using Ubuntu 22.04/Node.js 18   |
+| ghcr.io/gp-devenv/gp-node-devenv:22.04-18-1.1   | The latest build 1.1.x using Ubuntu 22.04/Node.js 18 |
+| ghcr.io/gp-devenv/gp-node-devenv:22.04-18-1.1.0 | The latest build 1.1.0 using Ubuntu 22.04/Node.js 18 |
+| ghcr.io/gp-devenv/gp-node-devenv:22.04-18-1.0   | The latest build 1.0.x using Ubuntu 22.04/Node.js 18 |
+| ghcr.io/gp-devenv/gp-node-devenv:22.04-18-1.0.0 | The latest build 1.0.0 using Ubuntu 22.04/Node.js 18 |
 
 For CI/CD, the build version is store in `.version` file. The build version is
 in the format
@@ -127,10 +127,13 @@ Once the previous step is completed, simpy run to build the current version:
 To build using a specific Ubuntu version, use:
 
 ```sh
-(cd scr && ./scripts/dev/image/build.sh <UBUNTU_VERSION>)
+(cd scr && ./scripts/dev/image/build.sh <UBUNTU_VERSION> <NODE_VERSION>)
 ```
 
-where `UBUNTU_VERSION` must 22.04.
+With:
+
+- `UBUNTU_VERSION` must be 22.04.
+- `NODE_VERSION` can be 14, 16 or 18.
 
 It will create and image `ghcr.io/gp-devenv/gp-node-devenv` tagged with the current
 version (see `src/.version` file) and `-dev` suffix.
@@ -140,10 +143,10 @@ names, however if you PR your change, it will be rejected. The ideal solution
 is to run the `docker build` command instead.
 
 To remove the created image (named:
-`ghcr.io/gp-devenv/gp-node-devenv:<UBUNTU_VERIONS>-<VERSION>-dev`), simply use:
+`ghcr.io/gp-devenv/gp-node-devenv:<UBUNTU_VERIONS>-<NODE_VERSION>-<VERSION>-dev`), simply use:
 
 ```sh
-(cd scr && ./scripts/dev/image/rm.sh <UBUNTU_VERSION>)
+(cd scr && ./scripts/dev/image/rm.sh <UBUNTU_VERSION> <NODE_VERSION>)
 ```
 
 <div id="run_dev" />
@@ -153,26 +156,29 @@ To remove the created image (named:
 To run an interactive container of a give Ubuntu version, simple use:
 
 ```sh
-(cd src && ./scripts/dev/container/run.sh <UBUNTU_VERSION>)
+(cd src && ./scripts/dev/container/run.sh <UBUNTU_VERSION> <NODE_VERSION>)
 ```
 
-where `UBUNTU_VERSION` must 22.04.
+With:
+
+- `UBUNTU_VERSION` must be 22.04.
+- `NODE_VERSION` can be 14, 16 or 18.
 
 Alternatively, you can create and start a container to run in background, and
 execute scripts on this container, using the following scripts:
 
-| Action | Script                                                                   |
-| ------ | ------------------------------------------------------------------------ |
-| create | `(cd src && ./scripts/dev/container/create.sh <UBUNTU_VERSION>)`         |
-| start  | `(cd src && ./scripts/dev/container/start.sh <UBUNTU_VERSION>)`          |
-| stop   | `(cd src && ./scripts/dev/container/stop.sh <UBUNTU_VERSION>)`           |
-| exec   | `(cd src && ./scripts/dev/container/exec.sh <UBUNTU_VERSION>) <COMMAND>` |
+| Action | Script                                                                           |
+| ------ | -------------------------------------------------------------------------------- |
+| create | `(cd src && ./scripts/dev/container/create.sh <UBUNTU_VERSION> <NODE_VERSION>))` |
+| start  | `(cd src && ./scripts/dev/container/start.sh <UBUNTU_VERSION> <NODE_VERSION>))`  |
+| stop   | `(cd src && ./scripts/dev/container/stop.sh <UBUNTU_VERSION> <NODE_VERSION>))`   |
+| exec   | `(cd src && ./scripts/dev/container/exec.sh <UBUNTU_VERSION> <NODE_VERSION>)`    |
 
 To remove the created container (named:
-`gp-node-devenv:<UBUNTU_VERIONS>-<VERSION>-dev`), simply use:
+`gp-node-devenv:<UBUNTU_VERIONS>-<NODE_VERSION>-<VERSION>-dev`), simply use:
 
 ```sh
-(cd src && ./scripts/dev/container/rm.sh <UBUNTU_VERSION>)
+(cd src && ./scripts/dev/container/rm.sh <UBUNTU_VERSION> <NODE_VERSION>)
 ```
 
 <div id="scan_dev" />
