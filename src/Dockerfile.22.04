@@ -37,8 +37,15 @@ RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - && \
 # Update npm
 RUN npm i -g npm@latest
 
+# Install nvm
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+
 # Switch back to user
 USER vscode
+
+# Install nvm
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+
 WORKDIR /home/vscode
 
 EXPOSE 80
