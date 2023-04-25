@@ -167,12 +167,12 @@ With:
 Alternatively, you can create and start a container to run in background, and
 execute scripts on this container, using the following scripts:
 
-| Action | Script                                                                           |
-| ------ | -------------------------------------------------------------------------------- |
-| create | `(cd src && ./scripts/dev/container/create.sh <UBUNTU_VERSION> <NODE_VERSION>))` |
-| start  | `(cd src && ./scripts/dev/container/start.sh <UBUNTU_VERSION> <NODE_VERSION>))`  |
-| stop   | `(cd src && ./scripts/dev/container/stop.sh <UBUNTU_VERSION> <NODE_VERSION>))`   |
-| exec   | `(cd src && ./scripts/dev/container/exec.sh <UBUNTU_VERSION> <NODE_VERSION>)`    |
+| Action | Script                                                                          |
+| ------ | ------------------------------------------------------------------------------- |
+| create | `(cd src && ./scripts/dev/container/create.sh <UBUNTU_VERSION> <NODE_VERSION>)` |
+| start  | `(cd src && ./scripts/dev/container/start.sh <UBUNTU_VERSION> <NODE_VERSION>)`  |
+| stop   | `(cd src && ./scripts/dev/container/stop.sh <UBUNTU_VERSION> <NODE_VERSION>)`   |
+| exec   | `(cd src && ./scripts/dev/container/exec.sh <UBUNTU_VERSION> <NODE_VERSION>)`   |
 
 To remove the created container (named:
 `gp-node-devenv:<UBUNTU_VERIONS>-<NODE_VERSION>-<VERSION>-dev`), simply use:
