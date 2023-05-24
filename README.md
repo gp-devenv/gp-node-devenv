@@ -223,14 +223,13 @@ make sure the `vscode` is the last one activate.
 
 ## Version
 
-_`Base image version` correspond to the undelying base image that can be found
+_`Base image version` correspond to the underlying base image that can be found
 [here](https://github.com/gp-devenv/gp-base-devenv/pkgs/container/gp-base-devenv)_
 
-|    Image    |           Base image version           |   Ubuntu    |    Node    |              Java             | amd64 | arm64 |
-| :---------: | :------------------------------------: | :---------: | :--------: | :---------------------------: | :---: | :---: |
-| 22:04-1.0.0 | ghcr.io/gp-devenv/gp-base-devenv:22.04 | 22.04 (LTS) | 18.x (LTS) | 11 (open-jdk-11-jre-headless) |   X   |   X   |
-| 22:04-1.1.0 | ghcr.io/gp-devenv/gp-base-devenv:22.04 | 22.04 (LTS) | 18.x (LTS) | 11 (open-jdk-11-jre-headless) |   X   |   X   |
-| 22:04-1.2.0 | ghcr.io/gp-devenv/gp-base-devenv:22.04 | 22.04 (LTS) | 18.x (LTS) | 11 (open-jdk-11-jre-headless) |   X   |   X   |
+|   Image   |            Base image version            |   Ubuntu    |      Node v14       | Node v16 | Node v18 |  Node v20 | amd64 | arm64 |
+| :-------: | :--------------------------------------: | :---------: | :-----------------: | :------: | :------: | :-------: | ----- | ----- |
+| 22:04-1.x | ghcr.io/gp-devenv/gp-base-devenv:22.04-1 | 22.04 (LTS) |          X          |    X     |    X     |           | X     | X     |
+| 22:04-2.x | ghcr.io/gp-devenv/gp-base-devenv:22.04-1 | 22.04 (LTS) | X (will be removed) |    X     |    X     |     X     | X     | X     |
 
 <div id="faq" />
 
