@@ -13,7 +13,7 @@
 
 # Build and validate
 
-name: pull_request
+name: Pull request
 
 on:
   # push:
@@ -28,7 +28,7 @@ jobs:
     strategy:
       matrix:
         ubuntuVersion: ['22.04']
-        nodeVersion: ['14', '16', '18', '20']
+        nodeVersion: ['16', '18']
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -39,4 +39,18 @@ jobs:
         env:
           UBUNTU_VERSION: ${{ matrix.ubuntuVersion }}
           NODE_VERSION: ${{ matrix.nodeVersion }}
+  cleanup:
+    runs-on: ubuntu-22.04
+    needs: build
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Cleanup
+        uses: gp-devenv/gp-docker-image-cleanup@v1
+        with:
+          runAsUser: gpfister
+          token: ${{ secrets.GHCR_IO_TOKEN }}
+          retentionDays: 7
+          isOwnedByOrganization: true
+          testOnly: true
 # End

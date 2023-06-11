@@ -14,7 +14,7 @@
 FROM ghcr.io/gp-devenv/gp-base-devenv:22.04-1
 
 LABEL org.opencontainers.image.source=https://github.com/gp-devenv/gp-node-devenv
-LABEL org.opencontainers.image.description "node dev image using ghcr.io/gp-devenv/gp-base-devenv:22.04-1"
+LABEL org.opencontainers.image.description "Node dev image using ghcr.io/gp-devenv/gp-base-devenv:22.04-1"
 LABEL org.opencontainers.image.licenses=MIT
 
 # Versions
@@ -34,19 +34,11 @@ RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - && \
     apt-get autoclean -y && \
     apt-get autoremove -y
 
-# Update npm
+# Update NPM
 RUN npm i -g npm@latest
 
-# Install nvm
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-
-# Switch back to user
-USER vscode
-
-# Install nvm
-RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-
-WORKDIR /home/vscode
+# Adding NVM
+COPY dist/etc/gp-devenv/zshrc.d /etc/gp-devenv/zshrc.d/
 
 EXPOSE 80
 
