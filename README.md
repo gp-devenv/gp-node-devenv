@@ -1,7 +1,10 @@
 [![License](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
 [![Ubuntu](https://img.shields.io/badge/ubuntu-22.04-orange)](https://ubuntu.com)
 ![ARM64](https://img.shields.io/badge/linux%2farm64-Yes-red)
+![ARMV7](https://img.shields.io/badge/linux%2farm%2fv7-Yes-red)
 ![AMD64](https://img.shields.io/badge/linux%2famd64-Yes-red)
+![NODE 16.X](https://img.shields.io/badge/Node-16-green)
+![NODE 18.X](https://img.shields.io/badge/Node-18-green)
 
 # gp-node-devenv: Build Node.js dev containers for VSCode
 
@@ -53,14 +56,14 @@ breaking (major).
 
 For example:
 
-| Image                                           | Description                                          |
-| ----------------------------------------------- | ---------------------------------------------------- |
-| ghcr.io/gp-devenv/gp-node-devenv:22.04-18       | The latest build using Ubuntu 22.04/Node.js 18       |
-| ghcr.io/gp-devenv/gp-node-devenv:22.04-18-1     | The latest build 1.x using Ubuntu 22.04/Node.js 18   |
-| ghcr.io/gp-devenv/gp-node-devenv:22.04-18-1.1   | The latest build 1.1.x using Ubuntu 22.04/Node.js 18 |
-| ghcr.io/gp-devenv/gp-node-devenv:22.04-18-1.1.0 | The latest build 1.1.0 using Ubuntu 22.04/Node.js 18 |
-| ghcr.io/gp-devenv/gp-node-devenv:22.04-18-1.0   | The latest build 1.0.x using Ubuntu 22.04/Node.js 18 |
-| ghcr.io/gp-devenv/gp-node-devenv:22.04-18-1.0.0 | The latest build 1.0.0 using Ubuntu 22.04/Node.js 18 |
+| Image                                           | Description                                            |
+| ----------------------------------------------- | ------------------------------------------------------ |
+| ghcr.io/gp-devenv/gp-node-devenv:22.04-20       | The latest build using Ubuntu 22.04 and Node v20       |
+| ghcr.io/gp-devenv/gp-node-devenv:22.04-20-1     | The latest build 1.x using Ubuntu 22.04 and Node v20   |
+| ghcr.io/gp-devenv/gp-node-devenv:22.04-20-1.1   | The latest build 1.1.x using Ubuntu 22.04 and Node v20 |
+| ghcr.io/gp-devenv/gp-node-devenv:22.04-20-1.1.0 | The latest build 1.1.0 using Ubuntu 22.04 and Node v20 |
+| ghcr.io/gp-devenv/gp-node-devenv:22.04-20-1.0   | The latest build 1.0.x using Ubuntu 22.04 and Node v20 |
+| ghcr.io/gp-devenv/gp-node-devenv:22.04-20-1.0.0 | The latest build 1.0.0 using Ubuntu 22.04 and Node v20 |
 
 For CI/CD, the build version is store in `.version` file. The build version is
 in the format
@@ -90,8 +93,8 @@ You will need to create a multiarch builder:
 ./src/scripts/buildx/setup.sh
 ```
 
-Up successful completion, it should at least have platforms `linux/arm64` and
-`linux/amd64`:
+On successful completion, it should at least have platforms `linux/arm64`,
+`linux/arm/v7` and `linux/amd64`:
 
 ```sh
 [+] Building 5.8s (1/1) FINISHED
@@ -226,10 +229,10 @@ make sure the `vscode` is the last one activate.
 _`Base image version` correspond to the underlying base image that can be found
 [here](https://github.com/gp-devenv/gp-base-devenv/pkgs/container/gp-base-devenv)_
 
-|   Image   |            Base image version            |   Ubuntu    |      Node v14       | Node v16 | Node v18 |  Node v20 | amd64 | arm64 |
-| :-------: | :--------------------------------------: | :---------: | :-----------------: | :------: | :------: | :-------: | ----- | ----- |
-| 22:04-1.x | ghcr.io/gp-devenv/gp-base-devenv:22.04-1 | 22.04 (LTS) |          X          |    X     |    X     |           | X     | X     |
-| 22:04-2.x | ghcr.io/gp-devenv/gp-base-devenv:22.04-1 | 22.04 (LTS) | X (will be removed) |    X     |    X     |     X     | X     | X     |
+|          Image           |            Base image version            |   Ubuntu    | Supported Node version | amd64 | arm64 | arm/v7 | Daily build |
+| :----------------------: | :--------------------------------------: | :---------: | :--------------------: | :---: | :---: | :----: | :---------: |
+|   22:04-<NODE_VERSION>   | ghcr.io/gp-devenv/gp-base-devenv:22.04-1 | 22.04 (LTS) |       16.x, 18.x       |   X   |   X   |   X    |     Yes     |
+| 22:04-<NODE_VERSION>-1.x | ghcr.io/gp-devenv/gp-base-devenv:22.04-1 | 22.04 (LTS) |       16.x, 18.x       |   X   |   X   |   X    |     Yes     |
 
 <div id="faq" />
 

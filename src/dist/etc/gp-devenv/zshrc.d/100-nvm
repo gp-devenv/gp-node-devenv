@@ -1,3 +1,5 @@
+#!/bin/sh
+
 #
 # gp-node-devenv
 # Copyright (c) 2023, Greg PFISTER. MIT License.
@@ -11,11 +13,19 @@
 # SOFTWARE.
 #
 
-FROM ghcr.io/gp-devenv/gp-docker-devenv:22.04
+# Install nvm
+if [ ! -f ~/.cache/.nvm-0.39.3 ]; then
+    if [ -d ~/.nvm ]; then rm -rf ~/.nvm; rm ~/.cache/.nvm*; fi
+    cp ~/.zshrc ~/.zshrc.bkp
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+    mv ~/.zshrc.bkp ~/.zshrc
 
-USER vscode
-WORKDIR /workspace
+    touch ~/.cache/.nvm-0.39.3
+fi
 
-EXPOSE 80
-
-ENTRYPOINT [ "sudo", "/entrypoint.sh" ]
+# Set environment
+if [ -d ~/.nvm ]; then 
+    export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion" 
+fi
