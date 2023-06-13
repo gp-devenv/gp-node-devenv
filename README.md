@@ -1,8 +1,12 @@
+[![Daily build](https://github.com/gp-devenv/gp-node-devenv/actions/workflows/dispatch.yaml/badge.svg)](https://github.com/gp-devenv/gp-node-devenv/actions/workflows/dispatch.yaml)
+
 [![License](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
+
 [![Ubuntu](https://img.shields.io/badge/ubuntu-22.04-orange)](https://ubuntu.com)
 ![ARM64](https://img.shields.io/badge/linux%2farm64-Yes-red)
 ![ARMV7](https://img.shields.io/badge/linux%2farm%2fv7-Yes-red)
 ![AMD64](https://img.shields.io/badge/linux%2famd64-Yes-red)
+
 ![NODE 16.X](https://img.shields.io/badge/Node-16-green)
 ![NODE 18.X](https://img.shields.io/badge/Node-18-green)
 
@@ -58,12 +62,12 @@ For example:
 
 | Image                                           | Description                                            |
 | ----------------------------------------------- | ------------------------------------------------------ |
-| ghcr.io/gp-devenv/gp-node-devenv:22.04-20       | The latest build using Ubuntu 22.04 and Node v20       |
-| ghcr.io/gp-devenv/gp-node-devenv:22.04-20-1     | The latest build 1.x using Ubuntu 22.04 and Node v20   |
-| ghcr.io/gp-devenv/gp-node-devenv:22.04-20-1.1   | The latest build 1.1.x using Ubuntu 22.04 and Node v20 |
-| ghcr.io/gp-devenv/gp-node-devenv:22.04-20-1.1.0 | The latest build 1.1.0 using Ubuntu 22.04 and Node v20 |
-| ghcr.io/gp-devenv/gp-node-devenv:22.04-20-1.0   | The latest build 1.0.x using Ubuntu 22.04 and Node v20 |
-| ghcr.io/gp-devenv/gp-node-devenv:22.04-20-1.0.0 | The latest build 1.0.0 using Ubuntu 22.04 and Node v20 |
+| ghcr.io/gp-devenv/gp-node-devenv:22.04-18       | The latest build using Ubuntu 22.04 and Node v18       |
+| ghcr.io/gp-devenv/gp-node-devenv:22.04-18-1     | The latest build 1.x using Ubuntu 22.04 and Node v18   |
+| ghcr.io/gp-devenv/gp-node-devenv:22.04-18-1.1   | The latest build 1.1.x using Ubuntu 22.04 and Node v18 |
+| ghcr.io/gp-devenv/gp-node-devenv:22.04-18-1.1.0 | The latest build 1.1.0 using Ubuntu 22.04 and Node v18 |
+| ghcr.io/gp-devenv/gp-node-devenv:22.04-18-1.0   | The latest build 1.0.x using Ubuntu 22.04 and Node v18 |
+| ghcr.io/gp-devenv/gp-node-devenv:22.04-18-1.0.0 | The latest build 1.0.0 using Ubuntu 22.04 and Node v18 |
 
 For CI/CD, the build version is store in `.version` file. The build version is
 in the format
@@ -136,7 +140,7 @@ To build using a specific Ubuntu version, use:
 With:
 
 - `UBUNTU_VERSION` must be 22.04.
-- `NODE_VERSION` can be 14, 16 or 18.
+- `NODE_VERSION` can be 16 or 18.
 
 It will create and image `ghcr.io/gp-devenv/gp-node-devenv` tagged with the current
 version (see `src/.version` file) and `-dev` suffix.

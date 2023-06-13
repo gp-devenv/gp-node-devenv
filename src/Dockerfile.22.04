@@ -14,7 +14,7 @@
 FROM ghcr.io/gp-devenv/gp-base-devenv:22.04-1
 
 LABEL org.opencontainers.image.source=https://github.com/gp-devenv/gp-node-devenv
-LABEL org.opencontainers.image.description "Node dev image using ghcr.io/gp-devenv/gp-base-devenv:22.04-1"
+LABEL org.opencontainers.image.description="Node dev container for VS Code running Ubuntu 22.04"
 LABEL org.opencontainers.image.licenses=MIT
 
 # Versions
@@ -33,6 +33,15 @@ RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - && \
     apt-get install -y nodejs && \
     apt-get autoclean -y && \
     apt-get autoremove -y
+
+# Add chromium
+RUN add-apt-repository ppa:saiarcot895/chromium-dev && \ 
+    apt-get update && \
+    apt-get install -y chromium-browser
+RUN echo '' >> /etc/zsh/zshenv && \
+    echo '# Set CHROME_BIN' >> /etc/zsh/zshenv && \
+    echo 'export CHROME_BIN=/usr/bin/chromium-browser' >> /etc/zsh/zshenv
+RUN ln -s /usr/bin/chromium-browser /usr/bin/chromium
 
 # Update NPM
 RUN npm i -g npm@latest
