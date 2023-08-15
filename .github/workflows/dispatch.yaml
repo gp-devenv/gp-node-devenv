@@ -29,12 +29,12 @@ jobs:
     runs-on: ubuntu-22.04
     strategy:
       matrix:
-        nodeVersion: ['16', '18']
+        nodeVersion: ['16', '18', '20']
     steps:
       - name: Checkout
         uses: actions/checkout@v3
         with:
-          ref: '1.2.0'
+          ref: '1.4.0'
       - name: Setup buildx
         run: (cd src && ./scripts/buildx/setup.sh)
       - name: Authenticating

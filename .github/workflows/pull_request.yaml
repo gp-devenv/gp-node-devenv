@@ -28,13 +28,13 @@ jobs:
     strategy:
       matrix:
         ubuntuVersion: ['22.04']
-        nodeVersion: ['16', '18']
+        nodeVersion: ['16', '18', '20']
     steps:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Setup buildx
         run: (cd src && ./scripts/buildx/setup.sh)
-      - name: Build using ghcr.io/gp-devenv/gp-base-devenv:${{ github.event.inputs.ubuntuVersion }} using Node.js v${{ matrix.nodeVersion }}
+      - name: Build using ghcr.io/gp-devenv/gp-base-devenv:${{ matrix.ubuntuVersion }} using Node.js v${{ matrix.nodeVersion }}
         run: (cd src && ./scripts/buildx/build.sh $UBUNTU_VERSION $NODE_VERSION)
         env:
           UBUNTU_VERSION: ${{ matrix.ubuntuVersion }}
