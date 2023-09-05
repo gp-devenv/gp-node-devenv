@@ -44,7 +44,7 @@ RUN echo '' >> /etc/zsh/zshenv && \
 RUN ln -s /usr/bin/chromium-browser /usr/bin/chromium
 
 # Update NPM
-RUN npm i -g npm@latest
+# RUN npm i -g npm@latest
 
 # Adding NVM
 COPY dist/etc/gp-devenv/zshrc.d /etc/gp-devenv/zshrc.d/
