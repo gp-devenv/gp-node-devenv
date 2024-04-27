@@ -2,7 +2,7 @@
 
 #
 # gp-node-devenv
-# Copyright (c) 2023, Greg PFISTER. MIT License.
+# Copyright (c) 2023-2024, Greg PFISTER. MIT License.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -13,14 +13,16 @@
 # SOFTWARE.
 #
 
+NVM_VERSION=0.39.7
+
 # Install nvm
-if [ ! -f ~/.cache/.nvm-0.39.3 ]; then
+if [ ! -f ~/.cache/.nvm-$NVM_VERSION ]; then
     if [ -d ~/.nvm ]; then rm -rf ~/.nvm; rm ~/.cache/.nvm*; fi
     cp ~/.zshrc ~/.zshrc.bkp
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v$NVM_VERSION/install.sh | bash
     mv ~/.zshrc.bkp ~/.zshrc
 
-    touch ~/.cache/.nvm-0.39.3
+    touch ~/.cache/.nvm-$NVM_VERSION
 fi
 
 # Set environment
