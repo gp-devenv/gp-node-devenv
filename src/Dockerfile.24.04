@@ -35,9 +35,7 @@ RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - && \
     apt-get autoremove -y
 
 # Add chromium
-RUN add-apt-repository ppa:saiarcot895/chromium-dev && \ 
-    apt-get update && \
-    apt-get install -y chromium-browser
+RUN apt-get install -y chromium-browser
 RUN echo '' >> /etc/zsh/zshenv && \
     echo '# Set CHROME_BIN' >> /etc/zsh/zshenv && \
     echo 'export CHROME_BIN=/usr/bin/chromium-browser' >> /etc/zsh/zshenv
