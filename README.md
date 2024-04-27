@@ -140,8 +140,8 @@ To build using a specific Ubuntu version, use:
 
 With:
 
-- `UBUNTU_VERSION` must be 22.04.
-- `NODE_VERSION` can be 16 or 18.
+- `UBUNTU_VERSION` can be 22.04 or 24.04.
+- `NODE_VERSION` can be 18, 20 or 20.
 
 It will create and image `ghcr.io/gp-devenv/gp-node-devenv` tagged with the current
 version (see `src/.version` file) and `-dev` suffix.
@@ -169,8 +169,8 @@ To run an interactive container of a give Ubuntu version, simple use:
 
 With:
 
-- `UBUNTU_VERSION` must be 22.04.
-- `NODE_VERSION` can be 14, 16 or 18.
+- `UBUNTU_VERSION` can be 22.04 or 24.04.
+- `NODE_VERSION` can be 18, 20 or 20.
 
 Alternatively, you can create and start a container to run in background, and
 execute scripts on this container, using the following scripts:
@@ -199,7 +199,7 @@ To scan the image of a give Ubuntu version, simple use:
 (cd src && ./scripts/dev/scan.sh <UBUNTU_VERSION>)
 ```
 
-where `UBUNTU_VERSION` must be 22.04.
+where `UBUNTU_VERSION` can be 22.04 or 24.04.
 
 <div id="build-from-this-image" />
 
@@ -236,8 +236,10 @@ _`Base image version` correspond to the underlying base image that can be found
 
 |          Image           |            Base image version            |   Ubuntu    | Supported Node version | amd64 | arm64 | arm/v7 | Daily build |
 | :----------------------: | :--------------------------------------: | :---------: | :--------------------: | :---: | :---: | :----: | :---------: |
-|   22:04-<NODE_VERSION>   | ghcr.io/gp-devenv/gp-base-devenv:22.04-1 | 22.04 (LTS) |       16.x, 18.x       |   X   |   X   |   X    |     Yes     |
-| 22:04-<NODE_VERSION>-1.x | ghcr.io/gp-devenv/gp-base-devenv:22.04-1 | 22.04 (LTS) |       16.x, 18.x       |   X   |   X   |   X    |     Yes     |
+|   22:04-<NODE_VERSION>   | ghcr.io/gp-devenv/gp-base-devenv:22.04-1 | 22.04 (LTS) |    18.x, 20.x, 22.x    |   X   |   X   |   X    |     Yes     |
+| 22:04-<NODE_VERSION>-1.x | ghcr.io/gp-devenv/gp-base-devenv:22.04-1 | 22.04 (LTS) |    18.x, 20.x, 22.x    |   X   |   X   |   X    |     Yes     |
+|   24:04-<NODE_VERSION>   | ghcr.io/gp-devenv/gp-base-devenv:24.04-1 | 24.04 (LTS) |    18.x, 20.x, 22.x    |   X   |   X   |   X    |     Yes     |
+| 24:04-<NODE_VERSION>-1.x | ghcr.io/gp-devenv/gp-base-devenv:24.04-1 | 24.04 (LTS) |    18.x, 20.x, 22.x    |   X   |   X   |   X    |     Yes     |
 
 <div id="faq" />
 

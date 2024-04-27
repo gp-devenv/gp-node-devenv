@@ -11,14 +11,14 @@
 # SOFTWARE.
 #
 
-FROM ghcr.io/gp-devenv/gp-base-devenv:22.04-1
+FROM ghcr.io/gp-devenv/gp-base-devenv:24.04-1
 
 LABEL org.opencontainers.image.source=https://github.com/gp-devenv/gp-node-devenv
-LABEL org.opencontainers.image.description="Node dev container for VS Code running Ubuntu 22.04"
+LABEL org.opencontainers.image.description="Node dev container for VS Code running Ubuntu 24.04"
 LABEL org.opencontainers.image.licenses=MIT
 
 # Versions
-ARG NODE_VERSION="20"
+ARG NODE_VERSION="22"
 
 USER root
 
