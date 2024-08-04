@@ -13,7 +13,7 @@
 # SOFTWARE.
 #
 
-NVM_VERSION=0.39.7
+NVM_VERSION=0.40.0
 
 # Install nvm
 if [ ! -f ~/.cache/.nvm-$NVM_VERSION ]; then
