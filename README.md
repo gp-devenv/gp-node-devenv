@@ -7,9 +7,9 @@
 ![ARMV7](https://img.shields.io/badge/linux%2farm%2fv7-Yes-red)
 ![AMD64](https://img.shields.io/badge/linux%2famd64-Yes-red)
 
-![NODE 16.X](https://img.shields.io/badge/Node-16-green)
-![NODE 18.X](https://img.shields.io/badge/Node-18-green)
 ![NODE 20.X](https://img.shields.io/badge/Node-20-green)
+![NODE 22.X](https://img.shields.io/badge/Node-22-green)
+![NODE 24.X](https://img.shields.io/badge/Node-24-green)
 
 # gp-node-devenv: Build Node.js dev containers for VSCode
 
@@ -63,12 +63,12 @@ For example:
 
 | Image                                           | Description                                            |
 | ----------------------------------------------- | ------------------------------------------------------ |
-| ghcr.io/gp-devenv/gp-node-devenv:22.04-18       | The latest build using Ubuntu 22.04 and Node v18       |
-| ghcr.io/gp-devenv/gp-node-devenv:22.04-18-1     | The latest build 1.x using Ubuntu 22.04 and Node v18   |
-| ghcr.io/gp-devenv/gp-node-devenv:22.04-18-1.1   | The latest build 1.1.x using Ubuntu 22.04 and Node v18 |
-| ghcr.io/gp-devenv/gp-node-devenv:22.04-18-1.1.0 | The latest build 1.1.0 using Ubuntu 22.04 and Node v18 |
-| ghcr.io/gp-devenv/gp-node-devenv:22.04-18-1.0   | The latest build 1.0.x using Ubuntu 22.04 and Node v18 |
-| ghcr.io/gp-devenv/gp-node-devenv:22.04-18-1.0.0 | The latest build 1.0.0 using Ubuntu 22.04 and Node v18 |
+| ghcr.io/gp-devenv/gp-node-devenv:24.04-24       | The latest build using Ubuntu 24.04 and Node v24       |
+| ghcr.io/gp-devenv/gp-node-devenv:24.04-24-1     | The latest build 1.x using Ubuntu 24.04 and Node v24   |
+| ghcr.io/gp-devenv/gp-node-devenv:24.04-24-1.1   | The latest build 1.1.x using Ubuntu 24.04 and Node v24 |
+| ghcr.io/gp-devenv/gp-node-devenv:24.04-24-1.1.0 | The latest build 1.1.0 using Ubuntu 24.04 and Node v24 |
+| ghcr.io/gp-devenv/gp-node-devenv:24.04-24-1.0   | The latest build 1.0.x using Ubuntu 24.04 and Node v24 |
+| ghcr.io/gp-devenv/gp-node-devenv:24.04-24-1.0.0 | The latest build 1.0.0 using Ubuntu 24.04 and Node v24 |
 
 For CI/CD, the build version is store in `.version` file. The build version is
 in the format
@@ -76,6 +76,10 @@ in the format
 
 Only the latest version (MAJOR, MAJOR.MINOR and MAJOR.MINOR.PATCH) is been built
 daily.
+
+It is recommanded to use the latest version of your choice of Ubuntu and Node,
+such as `ghcr.io/gp-devenv/gp-node-devenv:24.04-24`. Use a more specific image
+version if you have breaking changes.
 
 ### Testing locally using `-dev` images
 
@@ -141,7 +145,7 @@ To build using a specific Ubuntu version, use:
 With:
 
 - `UBUNTU_VERSION` can be 22.04 or 24.04.
-- `NODE_VERSION` can be 18, 20 or 20.
+- `NODE_VERSION` can be 20, 22 or 24.
 
 It will create and image `ghcr.io/gp-devenv/gp-node-devenv` tagged with the current
 version (see `src/.version` file) and `-dev` suffix.
@@ -170,7 +174,7 @@ To run an interactive container of a give Ubuntu version, simple use:
 With:
 
 - `UBUNTU_VERSION` can be 22.04 or 24.04.
-- `NODE_VERSION` can be 18, 20 or 20.
+- `NODE_VERSION` can be 20, 22 or 24.
 
 Alternatively, you can create and start a container to run in background, and
 execute scripts on this container, using the following scripts:
@@ -236,10 +240,10 @@ _`Base image version` correspond to the underlying base image that can be found
 
 |          Image           |            Base image version            |   Ubuntu    | Supported Node version | amd64 | arm64 | arm/v7 | Daily build |
 | :----------------------: | :--------------------------------------: | :---------: | :--------------------: | :---: | :---: | :----: | :---------: |
-|   22:04-<NODE_VERSION>   | ghcr.io/gp-devenv/gp-base-devenv:22.04-1 | 22.04 (LTS) |    18.x, 20.x, 22.x    |   X   |   X   |   X    |     Yes     |
-| 22:04-<NODE_VERSION>-1.x | ghcr.io/gp-devenv/gp-base-devenv:22.04-1 | 22.04 (LTS) |    18.x, 20.x, 22.x    |   X   |   X   |   X    |     Yes     |
-|   24:04-<NODE_VERSION>   | ghcr.io/gp-devenv/gp-base-devenv:24.04-1 | 24.04 (LTS) |    18.x, 20.x, 22.x    |   X   |   X   |   X    |     Yes     |
-| 24:04-<NODE_VERSION>-1.x | ghcr.io/gp-devenv/gp-base-devenv:24.04-1 | 24.04 (LTS) |    18.x, 20.x, 22.x    |   X   |   X   |   X    |     Yes     |
+|   22:04-<NODE_VERSION>   | ghcr.io/gp-devenv/gp-base-devenv:22.04-1 | 22.04 (LTS) |    20.x, 22.x, 24.x    |   X   |   X   |   X    |     Yes     |
+| 22:04-<NODE_VERSION>-1.x | ghcr.io/gp-devenv/gp-base-devenv:22.04-1 | 22.04 (LTS) |    20.x, 22.x, 24.x    |   X   |   X   |   X    |     Yes     |
+|   24:04-<NODE_VERSION>   | ghcr.io/gp-devenv/gp-base-devenv:24.04-1 | 24.04 (LTS) |    20.x, 22.x, 24.x    |   X   |   X   |   X    |     Yes     |
+| 24:04-<NODE_VERSION>-1.x | ghcr.io/gp-devenv/gp-base-devenv:24.04-1 | 24.04 (LTS) |    20.x, 22.x, 24.x    |   X   |   X   |   X    |     Yes     |
 
 <div id="faq" />
 

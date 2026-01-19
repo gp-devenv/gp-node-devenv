@@ -29,7 +29,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        nodeVersion: ['18', '20', '22', '24']
+        nodeVersion: ['20', '22', '24']
     steps:
       - name: Checkout
         uses: actions/checkout@v4
