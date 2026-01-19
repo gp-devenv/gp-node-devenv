@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/license-MIT-blue)](./LICENSE)
 
-[![Ubuntu](https://img.shields.io/badge/ubuntu-22.04-orange)](https://ubuntu.com)
+[![Ubuntu](https://img.shields.io/badge/ubuntu-latest-orange)](https://ubuntu.com)
 ![ARM64](https://img.shields.io/badge/linux%2farm64-Yes-red)
 ![ARMV7](https://img.shields.io/badge/linux%2farm%2fv7-Yes-red)
 ![AMD64](https://img.shields.io/badge/linux%2famd64-Yes-red)
