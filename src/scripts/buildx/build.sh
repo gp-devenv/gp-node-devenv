@@ -41,7 +41,7 @@ if [ ! -f "$DOCKERFILE" ]; then
 fi
 
 docker buildx build --no-cache \
-                    --platform linux/arm64,linux/amd64,linux/arm/v7 \
+                    --platform linux/arm64,linux/amd64 \
                     --build-arg NODE_VERSION="$2" \
                     --label org.opencontainers.image.source="https://github.com/gp-devenv/gp-node-devenv" \
                     --label org.opencontainers.image.description="Node dev container for VS Code running Ubuntu $1 and Node v$2" \
