@@ -1,6 +1,6 @@
 #
 # gp-node-devenv
-# Copyright (c) 2023-2024, Greg PFISTER. MIT License.
+# Copyright (c) 2023-2026, Greg PFISTER. MIT License.
 #
 # THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 # IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
@@ -19,17 +19,21 @@ on:
   release:
     types: [published]
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   deploy:
     name: Push ghcr.io/gp-devenv/gp-node-devenv
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ubuntuVersion: ['22.04', '24.04']
+        ubuntuVersion: ['22.04', '24.04', '26.04']
         nodeVersion: ['20', '22', '24']
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Setup buildx
         run: (cd src && ./scripts/buildx/setup.sh)
       - name: Authenticating
@@ -46,7 +50,7 @@ jobs:
     needs: deploy
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
       - name: Cleanup
         uses: gp-devenv/gp-docker-image-cleanup@v2
         with:
