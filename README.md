@@ -12,6 +12,7 @@
 ![NODE 20.X](https://img.shields.io/badge/Node-20-green)
 ![NODE 22.X](https://img.shields.io/badge/Node-22-green)
 ![NODE 24.X](https://img.shields.io/badge/Node-24-green)
+![NODE 26.X](https://img.shields.io/badge/Node-26-green)
 
 # gp-node-devenv: Build Node.js dev containers for VSCode
 
